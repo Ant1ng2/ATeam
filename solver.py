@@ -7,10 +7,14 @@ class Solver:
             primitiveValue = game.primitive()
             if primitiveValue == -1 or (primitiveValue == 0 and self.solve(newPosition) == -1):
                 return 1
-        else:
-            return -1
+        return -1
+
+    def solving(self, games):
+        results = {}
+        for game in games:
+            results[game.getState()] = self.solve(game)
+        return results
 
 solver = Solver()
-for y in range(11):
-    game2 = game.Game(y)
-    print (y, solver.solve(game2))
+games = [game.Game(y) for y in range(11)]
+print solver.solving(games)

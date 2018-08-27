@@ -6,7 +6,7 @@ class Game:
     def __init__(self, position):
         self.position = position
 
-    def getPosition(self):
+    def getState(self):
         return self.position
 
     def doMove(self, move):
