@@ -9,12 +9,15 @@ class Solver:
                 return 1
         return -1
 
-    def solving(self, games):
-        results = {}
-        for game in games:
-            results[game.getState()] = self.solve(game)
-        return results
+def solving(games):
+    results = {}
+    solver = Solver()
+    for game in games:
+        results[game.getState()] = solver.solve(game)
+    return results
 
 solver = Solver()
 games = [game.Game(y) for y in range(11)]
-print solver.solving(games)
+solved = solving(games)
+for key in solved.keys():
+    print [key, solved[key]]
