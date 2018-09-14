@@ -32,6 +32,11 @@ class Nim():
 		status = serializedString.split()
 		return Nim(status[0])
 
+	def gameName(self):
+		return "Nim"
+
+	def status(self):
+		return "(position: {})".format(self.position)
 
 class OddEven():
 	# Each instance has its own status
@@ -62,3 +67,10 @@ class OddEven():
 	def deserialize(serializedString):
 		status = serializedString.split()
 		return Nim(status[0], status[1], status[2])
+
+	def gameName(self):
+		return "OddEven"
+
+	def status(self):
+		return "(position: {}, lParity: {}, rParity: {})".format(self.position, self.lParity, self.rParity)
+
