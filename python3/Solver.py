@@ -8,7 +8,7 @@ class Solver():
 	def resetMemory(self):
 		self.memory.clear()
 
-	def solveWithoutMemory(self, game):
+	def solveWeakWithoutMemory(self, game):
 		primitive = game.primitive()
 		if primitive != Game.Value.Undecided:
 			return primitive
@@ -35,7 +35,7 @@ class Solver():
 		self.memory[serialized] = Game.Value.Lose
 		return Game.Value.Lose
 
-		# this one will traverse all subtree
+	# this one will traverse all subtree
 	def solveTraverse(self, game):
 		winFlag = False
 		serialized = game.serialize()
@@ -54,7 +54,6 @@ class Solver():
 			self.memory[serialized] = Game.Value.Lose
 		return Game.Value.Win if winFlag else Game.Value.Lose
 
-solver = Solver()
 
 #print(solver.solve(Game.Nim(10)))
 print(solver.solveTraverse(Game.OddEven(50)))
