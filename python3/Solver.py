@@ -19,7 +19,7 @@ class Solver():
 		return Game.Value.Lose
 
 	# this one will end when find the anther is Win
-	def solve(self, game): 
+	def solve(self, game):
 		serialized = game.serialize()
 		if serialized in self.memory:
 			return self.memory[serialized]
@@ -36,7 +36,7 @@ class Solver():
 		return Game.Value.Lose
 
 		# this one will traverse all subtree
-	def solveTraverse(self, game): 
+	def solveTraverse(self, game):
 		winFlag = False
 		serialized = game.serialize()
 		if serialized in self.memory:
@@ -57,14 +57,12 @@ class Solver():
 solver = Solver()
 
 #print(solver.solve(Game.Nim(10)))
-print(solver.solveTraverse(Game.OddEven(15)))
+print(solver.solveTraverse(Game.OddEven(50)))
 
 memory = []
 for game, value in solver.memory.items():
 	memory.append((game, value))
-	
+
 memory.sort(key=lambda item: int(item[0].split()[0]), reverse=True)
 for item in memory:
-	print(item[0], item[1])
-
-
+	print(item[0], item[1].name)

@@ -5,6 +5,41 @@ class Value(Enum):
 	Lose = "Lose"
 	Undecided = "Undecided"
 
+class FourQueens():
+
+	class State():
+
+		def __init__(self, array):
+			self.positions = array
+
+		def getPiece(self, x, y):
+			return self.positions[x][y]
+
+	class Move():
+
+		def __init__(self, init, final):
+			self.init = init
+			self.final = final
+
+		def getInitialPosition(self):
+			return self.init
+
+		def getFinalPosition(self):
+			return self.final
+
+		def slope(self):
+			return (abs(self.init[0] - self.final[0]), abs(self.init[1] - self.final[1]))
+
+	def __init__(self, state):
+		self.position = state
+
+	def doMove(self, move):
+		init = move.getInitialPosition()
+		final = move.getFinalPosition()
+		piece = state.getPiece(init[0], init[1])
+		if piece[0] != piece[1] and (piece[0] == 0 or piece[1] == 0):
+			if piece[0] != piece[1]:
+				
 
 class Nim():
 	# Each instance has its own status
@@ -32,7 +67,6 @@ class Nim():
 		status = serializedString.split()
 		return Nim(status[0])
 
-
 class OddEven():
 	# Each instance has its own status
 	# In this game, (position, lParity, rParity) is the status
@@ -57,8 +91,8 @@ class OddEven():
 			return Value.Lose
 
 	def serialize(self):
-		return "{} {} {}".format(self.position, self.lParity, self.rParity) 
+		return "{} {} {}".format(self.position, self.lParity, self.rParity)
 
 	def deserialize(serializedString):
 		status = serializedString.split()
-		return Nim(status[0], status[1], status[2])
+		return OddEven(status[0], status[1], status[2])
