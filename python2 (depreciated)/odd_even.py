@@ -12,7 +12,7 @@ class OddEven(Game):
         self.remaining = position
 
     def getState(self):
-        return (self.playes[0], self.players[1], self.remaining)
+        return (self.players[0], self.players[1], self.remaining)
 
     def doMove(self, move):
         if move % 2 == 1:
